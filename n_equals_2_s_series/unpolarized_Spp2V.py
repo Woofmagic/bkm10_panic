@@ -32,7 +32,7 @@ def calculate_s_2_plus_plus_unpolarized_V(
         parentheses_term = 1. - one_minus_2xb * t_over_Q_squared
 
         # (7): Calculate the prefactor:
-        prefactor = 4. * lepton_helicity * fancy_y_stuff * lepton_energy_fraction_y * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**4
+        prefactor = -4. * lepton_helicity * fancy_y_stuff * lepton_energy_fraction_y * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**4
 
         # (8): Calculate the coefficient
         s_2_plus_plus_unp_V = prefactor * parentheses_term * bracket_term
