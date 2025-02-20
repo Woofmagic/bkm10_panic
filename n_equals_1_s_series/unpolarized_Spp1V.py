@@ -24,14 +24,14 @@ def calculate_s_1_plus_plus_unpolarized_V(
         bracket_term = root_one_plus_epsilon_squared - 1. + (1. + root_one_plus_epsilon_squared - 2. * x_Bjorken) * t_over_Q_squared
 
         # (4): Calculate the prefactor:
-        prefactor = 8. * lepton_helicity * shorthand_k * lepton_energy_fraction_y * (2. - lepton_energy_fraction_y) * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**4
+        prefactor = -8. * lepton_helicity * shorthand_k * lepton_energy_fraction_y * (2. - lepton_energy_fraction_y) * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**4
 
         # (5): Calculate the coefficient
         s_1_plus_plus_unp_V = prefactor * bracket_term
         
         # (5.1): If verbose, log the output:
         if verbose:
-            print(f"> Calculated s_1_plus_plus_unp_V to be: {s_1_plus_plus_unp_V}")
+            print(f"> Calculated s_1_plus_plus_unp_V to be:\n{s_1_plus_plus_unp_V}")
 
         # (6): Return the coefficient:
         return s_1_plus_plus_unp_V

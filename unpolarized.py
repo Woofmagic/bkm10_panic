@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 _MASS_OF_PROTON_IN_GEV = .93827208816
 _MASS_OF_PROTON_SQUARED_IN_GEV_SQUARED = _MASS_OF_PROTON_IN_GEV *_MASS_OF_PROTON_IN_GEV
@@ -11,7 +12,7 @@ value_of_Q_squared = 1.82
 value_of_x_Bjorken = 0.34
 value_of_hadron_recoil = -0.17
 value_of_beam_energy = 5.75
-value_of_lepton_helicity = 0.5
+value_of_lepton_helicity = 1.0
 
 compton_form_factor_h_real = -0.897
 compton_form_factor_h_imaginary = 2.421
@@ -46,20 +47,33 @@ verbose = True
 # t_prime = -0.034481755270847486
 # k_tilde = 0.1592415651944438
 # shorthand_k = 0.08492693191323883
+# Dirac_form_factor_F1 = 0.7049508167585219
+# Pauli_form_factor_F2 = 1.1137103937669304
 
 #  These numbers are from Python:
-epsilon = 0.4729356100497334
-lepton_energy_fraction_y = 0.4960961235592845
-skewness_parameter = 0.1990618883714652
-squared_hadronic_momentum_transfer_t_minimum = -0.13551824472915242
-t_prime = -0.0344817552708476
-k_tilde = 0.15326511787351363
-shorthand_k = 0.08173956475763514
-Dirac_form_factor_F1 = 0.7049508167585219
-Pauli_form_factor_F2 = 1.1137103937669304
+# epsilon = 0.4729356100497334
+# lepton_energy_fraction_y = 0.4960961235592845
+# skewness_parameter = 0.1990618883714652
+# squared_hadronic_momentum_transfer_t_minimum = -0.13551824472915242
+# t_prime = -0.0344817552708476
+# k_tilde = 0.15326511787351363
+# shorthand_k = 0.08173956475763514
+# Dirac_form_factor_F1 = 0.7049508167585219
+# Pauli_form_factor_F2 = 1.1137103937669304
+
+# These numbers are from Liliet:
+epsilon = 0.472935565613
+lepton_energy_fraction_y = 0.496096170172
+skewness_parameter = 0.199061888371
+squared_hadronic_momentum_transfer_t_minimum = -0.13551822229
+t_prime = value_of_hadron_recoil - squared_hadronic_momentum_transfer_t_minimum
+k_tilde = 0.153827372074
+shorthand_k = 0.0820394232521
+Dirac_form_factor_F1 = 0.68565636208
+Pauli_form_factor_F2 = 1.0986689028
 
 # (2.X): Calculate the cross-section prefactor:
-cross_section_prefactor = 3.5309544777485675e-10
+cross_section_prefactor = 3.5309551538e-10
 
 def compute_cff_effective(
     skewness_parameter: float,
@@ -158,60 +172,6 @@ from n_equals_2_s_series.unpolarized_S0p2 import calculate_s_2_zero_plus_unpolar
 from n_equals_2_s_series.unpolarized_S0p2V import calculate_s_2_zero_plus_unpolarized_V
 from n_equals_2_s_series.unpolarized_S0p2A import calculate_s_2_zero_plus_unpolarized_A
 
-C0_pp_unpolarized = calculate_c_0_plus_plus_unpolarized(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    k_tilde,
-    verbose)
-
-C0V_pp_unpolarized = calculate_c_0_plus_plus_unpolarized_V(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    k_tilde,
-    verbose)
-
-C0A_pp_unpolarized = calculate_c_0_plus_plus_unpolarized_A(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    k_tilde,
-    verbose)
-
-C0_0p_unpolarized = calculate_c_0_zero_plus_unpolarized(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    shorthand_k,
-    verbose)
-
-C0V_0p_unpolarized = calculate_c_0_zero_plus_unpolarized_V(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    shorthand_k,
-    verbose)
-
-C0A_0p_unpolarized = calculate_c_0_zero_plus_unpolarized_A(
-    value_of_Q_squared,
-    value_of_x_Bjorken,
-    value_of_hadron_recoil,
-    epsilon,
-    lepton_energy_fraction_y,
-    shorthand_k,
-    verbose)
-
 curly_C_unpolarized_interference_for_pp = calculate_curly_C_unpolarized_interference(
     value_of_Q_squared,
     value_of_x_Bjorken,
@@ -270,6 +230,60 @@ curly_C_A_unpolarized_interference_for_0p = calculate_curly_C_unpolarized_interf
     Dirac_form_factor_F1,
     Pauli_form_factor_F2,
     compute_cff_effective(skewness_parameter, compton_form_factor_h_tilde, use_WW),
+    verbose)
+
+C0_pp_unpolarized = calculate_c_0_plus_plus_unpolarized(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    k_tilde,
+    verbose)
+
+C0V_pp_unpolarized = calculate_c_0_plus_plus_unpolarized_V(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    k_tilde,
+    verbose)
+
+C0A_pp_unpolarized = calculate_c_0_plus_plus_unpolarized_A(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    k_tilde,
+    verbose)
+
+C0_0p_unpolarized = calculate_c_0_zero_plus_unpolarized(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    shorthand_k,
+    verbose)
+
+C0V_0p_unpolarized = calculate_c_0_zero_plus_unpolarized_V(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    shorthand_k,
+    verbose)
+
+C0A_0p_unpolarized = calculate_c_0_zero_plus_unpolarized_A(
+    value_of_Q_squared,
+    value_of_x_Bjorken,
+    value_of_hadron_recoil,
+    epsilon,
+    lepton_energy_fraction_y,
+    shorthand_k,
     verbose)
 
 curly_C_0_pp_int =  (curly_C_unpolarized_interference_for_pp

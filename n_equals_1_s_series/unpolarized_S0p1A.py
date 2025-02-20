@@ -21,14 +21,14 @@ def calculate_s_1_zero_plus_unpolarized_A(
         fancy_y_stuff = np.sqrt(1. - lepton_energy_fraction_y - epsilon**2 * lepton_energy_fraction_y**2 / 4.)
 
         # (3): Calculate the prefactor:
-        prefactor = 8. * np.sqrt(2.) * lepton_helicity * lepton_energy_fraction_y * (2. - lepton_energy_fraction_y) * (1. - 2. * x_Bjorken) / one_plus_epsilon_squared_squared
+        prefactor = -8. * np.sqrt(2.) * lepton_helicity * lepton_energy_fraction_y * (2. - lepton_energy_fraction_y) * (1. - 2. * x_Bjorken) / one_plus_epsilon_squared_squared
 
         # (4): Calculate the coefficient
-        s_1_zero_plus_unp_A = prefactor * fancy_y_stuff * squared_hadronic_momentum_transfer_t * shorthand_k**2 / squared_Q_momentum_transfer**2
+        s_1_zero_plus_unp_A = prefactor * fancy_y_stuff * squared_hadronic_momentum_transfer_t * shorthand_k**2 / squared_Q_momentum_transfer
         
         # (4.1): If verbose, log the output:
         if verbose:
-            print(f"> Calculated s_1_zero_plus_unp_A to be: {s_1_zero_plus_unp_A}")
+            print(f"> Calculated s_1_zero_plus_unp_A to be:\n{s_1_zero_plus_unp_A}")
 
         # (5): Return the coefficient:
         return s_1_zero_plus_unp_A

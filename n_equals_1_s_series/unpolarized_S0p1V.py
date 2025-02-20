@@ -33,7 +33,7 @@ def calculate_s_1_zero_plus_unpolarized_V(
         
         # (6.1): If verbose, log the output:
         if verbose:
-            print(f"> Calculated s_1_zero_plus_unp_V to be: {s_1_zero_plus_unp_V}")
+            print(f"> Calculated s_1_zero_plus_unp_V to be:\n{s_1_zero_plus_unp_V}")
 
         # (7): Return the coefficient:
         return s_1_zero_plus_unp_V

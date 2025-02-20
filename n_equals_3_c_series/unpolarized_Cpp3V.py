@@ -23,7 +23,7 @@ def calculate_c_3_plus_plus_unpolarized_V(
         major_term = root_one_plus_epsilon_squared - 1. + (1. + root_one_plus_epsilon_squared - 2. * x_Bjorken) * t_over_Q_squared
 
         # (4): Calculate he prefactor:
-        prefactor = 8. * shorthand_k * (1. - lepton_energy_fraction_y - epsilon**2 * lepton_energy_fraction_y**2 / 4.) * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**5
+        prefactor = -8. * shorthand_k * (1. - lepton_energy_fraction_y - epsilon**2 * lepton_energy_fraction_y**2 / 4.) * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**5
         
         # (5): The entire thing:
         c_3_plus_plus_V_unp = prefactor * major_term

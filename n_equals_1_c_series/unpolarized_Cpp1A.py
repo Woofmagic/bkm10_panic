@@ -38,8 +38,8 @@ def calculate_c_1_plus_plus_unpolarized_A(
         # (8): Calculate the second bracket term:
         second_bracket_term = 1. - 0.5 * x_Bjorken + 0.25 * (one_minus_2xb + root_one_plus_epsilon_squared) * (1. - t_over_Q_squared) + (4. * x_Bjorken * one_minus_xb + epsilon**2) * t_prime_over_Q_squared / (2. * root_one_plus_epsilon_squared)
 
-        # (9): Calculate the prefactor: 
-        prefactor = 16. * shorthand_k * t_over_Q_squared / root_one_plus_epsilon_squared**4
+        # (9): Calculate the prefactor:
+        prefactor = -16. * shorthand_k * t_over_Q_squared / root_one_plus_epsilon_squared**4
         
         # (10): The entire thing:
         c_1_plus_plus_A_unp = prefactor * (fancy_y_stuff * first_bracket_term_second_part - (2. - lepton_energy_fraction_y)**2 * second_bracket_term)

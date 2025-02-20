@@ -5,7 +5,7 @@ def calculate_c_1_plus_plus_unpolarized_V(
     x_Bjorken: float, 
     squared_hadronic_momentum_transfer_t: float,
     epsilon: float,
-    lepton_energy_fraction_y: float, 
+    lepton_energy_fraction_y: float,
     t_prime: float,
     shorthand_k: float,
     verbose: bool = False) -> float:
@@ -30,7 +30,7 @@ def calculate_c_1_plus_plus_unpolarized_V(
         second_bracket_term_second_part = 0.5 * (1. + root_one_plus_epsilon_squared - 2. * x_Bjorken) * t_prime / squared_Q_momentum_transfer
 
         # (6): The prefactor in front of the brackets:
-        coefficient_prefactor = 16. * shorthand_k * x_Bjorken * t_over_Q_squared / root_one_plus_epsilon_squared**2.5
+        coefficient_prefactor = 16. * shorthand_k * x_Bjorken * t_over_Q_squared / np.power(root_one_plus_epsilon_squared, 5)
 
         # (7): The entire thing:
         c_1_plus_plus_V_unp = coefficient_prefactor * (first_bracket_term + second_bracket_term_first_part * second_bracket_term_second_part)

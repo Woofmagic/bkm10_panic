@@ -21,7 +21,7 @@ def calculate_s_1_plus_plus_unpolarized(
         tPrime_over_Q_squared = t_prime / squared_Q_momentum_transfer
 
         # (3): Calculate the bracket term:
-        bracket_term = 1. + ((1. - x_Bjorken + 0.5 * (root_one_plus_epsilon_squared - 1.)) * tPrime_over_Q_squared) / root_one_plus_epsilon_squared**2
+        bracket_term = 1. + ((1. - x_Bjorken + 0.5 * (root_one_plus_epsilon_squared - 1.)) / root_one_plus_epsilon_squared**2) * tPrime_over_Q_squared
         
         # (4): Calculate the prefactor:
         prefactor = 8. * lepton_helicity * shorthand_k * lepton_energy_fraction_y * (2. - lepton_energy_fraction_y) / root_one_plus_epsilon_squared**2

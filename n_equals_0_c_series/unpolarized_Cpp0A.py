@@ -1,11 +1,11 @@
 import numpy as np
 
 def calculate_c_0_plus_plus_unpolarized_A(
-    squared_Q_momentum_transfer: float, 
-    x_Bjorken: float, 
+    squared_Q_momentum_transfer: float,
+    x_Bjorken: float,
     squared_hadronic_momentum_transfer_t: float,
     epsilon: float,
-    lepton_energy_fraction_y: float, 
+    lepton_energy_fraction_y: float,
     k_tilde: float,
     verbose: bool = False) -> float:
     """

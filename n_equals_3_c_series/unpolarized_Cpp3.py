@@ -26,14 +26,14 @@ def calculate_c_3_plus_plus_unpolarized(
         intermediate_term = (root_one_plus_epsilon_squared - 1.) / root_one_plus_epsilon_squared**5
 
         # (5): Calculate the prefactor:
-        prefactor = 8. * shorthand_k * (1. - lepton_energy_fraction_y - epsilon**2 * lepton_energy_fraction_y**2 / 4.)
+        prefactor = -8. * shorthand_k * (1. - lepton_energy_fraction_y - epsilon**2 * lepton_energy_fraction_y**2 / 4.)
         
         # (6): Calculate the coefficient
         c_3_plus_plus_unp = prefactor * intermediate_term * major_term
         
         # (6.1): If verbose, log the output:
         if verbose:
-            print(f"> Calculated c_3_plus_plus_unp to be: {c_3_plus_plus_unp}")
+            print(f"> Calculated c_3_plus_plus_unp to be:\n{c_3_plus_plus_unp}")
 
         # (7): Return the coefficient:
         return c_3_plus_plus_unp
